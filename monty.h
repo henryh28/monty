@@ -50,6 +50,7 @@ extern global_t global;
 /* operation_functions.c: Manipulate the stack*/
 void op_push(stack_t **stack, unsigned int line_number);
 void op_pop(stack_t **stack, unsigned int line_number);
+void op_nop(stack_t **stack, unsigned int line_number);
 
 /* display_functions.c: Print the stack */
 void op_pall(stack_t **stack, unsigned int line_number);

@@ -39,9 +39,8 @@ void op_add(stack_t **stack, unsigned int line_number)
 	}
 
 	target = *stack;
+	(*stack)->next->n += (*stack)->n;
 	*stack = (*stack)->next;
-	(*stack)->n += target->n;
-	(*stack)->prev = NULL;
 
 	free(target);
 }

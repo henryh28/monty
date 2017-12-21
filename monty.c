@@ -19,6 +19,7 @@ void find_function(stack_t **stack, unsigned int line_number)
 		{"pop", op_pop},
 		{"swap", op_swap},
 		{"add", op_add},
+		{"nop", op_nop},
 		{NULL, NULL}
 	};
 
@@ -70,7 +71,10 @@ int main(int argc, char **argv)
 		global.op_name = strtok(line, "\n\t ");
 		global.value = strtok(NULL, " ");
 
-		find_function(&head, line_number);
+		if (global.op_name != NULL)
+		{
+			find_function(&head, line_number);
+		}
 		line_number++;
 	}
 
