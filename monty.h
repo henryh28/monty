@@ -47,12 +47,17 @@ typedef struct global_s
 extern global_t global;
 
 
-/* Mandatory functions */
+/* operation_functions.c: Manipulate the stack*/
 void op_push(stack_t **stack, unsigned int line_number);
+void op_pop(stack_t **stack, unsigned int line_number);
+
+/* display_functions.c: Print the stack */
 void op_pall(stack_t **stack, unsigned int line_number);
 void op_pint(stack_t **stack, unsigned int line_number);
-void op_pop(stack_t **stack, unsigned int line_number);
+
+/* multi_node_functions.c: Nodes that interact with each other */
 void op_swap(stack_t **stack, unsigned int line_number);
+void op_add(stack_t **stack, unsigned int line_number);
 
 
 #endif
