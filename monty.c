@@ -15,6 +15,7 @@ void find_function(stack_t **stack, unsigned int line_number)
 	instruction_t functions[] = {
 		{"push", op_push},
 		{"pall", op_pall},
+		{"pint", op_pint},
 		{NULL, NULL}
 	};
 
