@@ -40,13 +40,13 @@ void op_push(stack_t **stack, unsigned int line_number)
 
 	new->n = atoi(global.value);
 	new->prev = NULL;
-	new->next = (*stack) == NULL ? NULL : *stack;
-	if ((*stack) != NULL)
+	new->next = *stack;
+	if (*stack != NULL)
 	{
 		(*stack)->prev = new;
 	}
 	*stack = new;
-	global.head = (*stack);
+	global.head = new;
 }
 
 /**
@@ -67,18 +67,13 @@ void op_pop(stack_t **stack, unsigned int line_number)
 	}
 
 	target = *stack;
-
-	if ((*stack)->next != NULL)
+	*stack = (*stack)->next;
+	if (*stack != NULL)
 	{
-		*stack = (*stack)->next;
 		(*stack)->prev = NULL;
-		free(target);
 	}
-	else
-	{
-		free(target);
-		global.head = NULL;
-	}
+
+	free(target);
 }
 
 /**
