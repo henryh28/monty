@@ -2,6 +2,8 @@
 #define MONTY_H
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -31,20 +33,21 @@ typedef struct instruction_s
 {
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
-} instruction_t;/**
-		 * struct instruction_s - opcoode and its function
-		 * @opcode: the opcode
-		 * @f: function to handle the opcode
-		 *
-		 * Description: opcode and its function
-		 * for stack, queues, LIFO, FIFO Holberton project
-		 */
-typedef struct instruction_s
-{
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/** Functions for printing opcodes **/
+typedef struct global_s
+{
+  char *name;
+  char *value;
+} global_t;
+
+extern global_t global;
+
+/** Functions for printing stack **/
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
+
+/** Functions for adding/removing on stack **/
+void push(stack_t **stack, unsigned int line_number); 
+
+#endif
