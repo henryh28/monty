@@ -15,6 +15,10 @@ void get_op_func(stack_t **stack, unsigned int line_number)
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
+		{"pop", pop},
+		{"swap", swap},
+		{"add", add},
+		{"nop", nop},
 		{NULL, NULL}
 	};
 
@@ -29,15 +33,16 @@ void get_op_func(stack_t **stack, unsigned int line_number)
 			ops[i].f(stack, line_number);
 			break;
 		}
+		i++;
 	}
-	i++;
 }
 
 /**
- * main - 
+ * main - monty interpreter
  *
- *
- *
+ * @argc: argument count
+ * @argv: argument array
+ * Return: success if yay, failure if nay
  */
 int main(int argc, char **argv)
 {

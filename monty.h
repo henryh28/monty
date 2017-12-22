@@ -49,5 +49,10 @@ void pint(stack_t **stack, unsigned int line_number);
 
 /** Functions for adding/removing on stack **/
 void push(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
+
+/** Functions for leaving the stack alone **/
+void nop(stack_t **stack, unsigned int line_number);
 
 #endif
