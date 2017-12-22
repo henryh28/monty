@@ -8,33 +8,33 @@
  */
 void push(stack_t **stack, unsigned int line_number __attribute__((unused)))
 {
-  stack_t *new;
-  stack_t *temp;
+	stack_t *new;
+	stack_t *temp;
 
-  temp = *stack;
+	temp = *stack;
 
-  if (stack == NULL)
-    exit(EXIT_FAILURE);
+	if (stack == NULL)
+		exit(EXIT_FAILURE);
 
-  new = malloc(sizeof(stack_t));
-  if (new == NULL)
-    {
-      printf("Error: malloc failed\n");
-      exit(EXIT_FAILURE);
-    }
+	new = malloc(sizeof(stack_t));
+	if (new == NULL)
+	{
+		printf("Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
 
-  new->n = atoi(global.value);
-  new->prev = NULL;
+	new->n = atoi(global.value);
+	new->prev = NULL;
 
-  if (*stack == NULL)
-    {
-      new->next = NULL;
-      *stack = new;
-      exit(EXIT_FAILURE);
-    }
+	if (*stack == NULL)
+	{
+		new->next = NULL;
+		*stack = new;
+		exit(EXIT_FAILURE);
+	}
 
-  new->next = *stack;
-  temp->prev = new;
+	new->next = *stack;
+	temp->prev = new;
 
-  *stack = new;
+	*stack = new;
 }
