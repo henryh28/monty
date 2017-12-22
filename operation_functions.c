@@ -18,10 +18,8 @@ void op_push(stack_t **stack, unsigned int line_number)
 		printf("L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-
 	size = atoi(global.value) <= 0 ? 1 : 0;
 	number = abs(atoi(global.value));
-
 	while (number > 0)
 	{
 		number /= 10;
@@ -42,13 +40,13 @@ void op_push(stack_t **stack, unsigned int line_number)
 
 	new->n = atoi(global.value);
 	new->prev = NULL;
-	new->next = *stack;
-	if (*stack != NULL)
+	new->next = (*stack) == NULL ? NULL : *stack;
+	if ((*stack) != NULL)
 	{
 		(*stack)->prev = new;
 	}
 	*stack = new;
-	global.head = new;
+	global.head = (*stack);
 }
 
 /**
@@ -69,12 +67,18 @@ void op_pop(stack_t **stack, unsigned int line_number)
 	}
 
 	target = *stack;
-	*stack = (*stack)->next;
-	if (*stack != NULL)
+
+	if ((*stack)->next != NULL)
 	{
+		*stack = (*stack)->next;
 		(*stack)->prev = NULL;
+		free(target);
 	}
-	free(target);
+	else
+	{
+		free(target);
+		global.head = NULL;
+	}
 }
 
 /**
