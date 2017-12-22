@@ -20,7 +20,6 @@ void op_swap(stack_t **stack, unsigned int line_number)
 	(*stack)->n = (*stack)->n - (*stack)->next->n;
 }
 
-
 /**
  * op_add       - Adds the top two elements of @stack
  *

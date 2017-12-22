@@ -19,7 +19,6 @@ void op_pall(stack_t **stack, unsigned int line_number)
 	}
 }
 
-
 /**
  * op_pint      - Print value at top of the stack
  *

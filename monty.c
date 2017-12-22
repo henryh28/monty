@@ -2,7 +2,6 @@
 
 global_t global;
 
-
 /**
  * free_stack      - Free memory used by stack
  */
