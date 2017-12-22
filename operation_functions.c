@@ -48,6 +48,7 @@ void op_push(stack_t **stack, unsigned int line_number)
 		(*stack)->prev = new;
 	}
 	*stack = new;
+	global.head = new;
 }
 
 /**

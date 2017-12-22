@@ -2,6 +2,24 @@
 
 global_t global;
 
+
+/**
+ * free_stack      - Free memory used by stack
+ */
+
+void free_stack(void)
+{
+	if (global.head != NULL)
+	{
+		while (global.head->next != NULL)
+		{
+			global.head = global.head->next;
+			free(global.head->prev);
+		}
+		free(global.head);
+	}
+}
+
 /**
  * find_function   - Find function to match argument, if any
  *
@@ -68,6 +86,7 @@ int main(int argc, char **argv)
 		printf("Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
+	atexit(free_stack);
 
 	while (getline(&line, &line_length, fp) != -1)
 	{
@@ -80,6 +99,9 @@ int main(int argc, char **argv)
 		}
 		line_number++;
 	}
+
+	free(line);
+	fclose(fp);
 
 	exit(EXIT_SUCCESS);
 }
