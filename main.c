@@ -30,7 +30,13 @@ void get_op_func(stack_t **stack, unsigned int line_number)
   i++;
 }
 
-void main()
+/**
+ * main - 
+ *
+ *
+ *
+ */
+int main(int argc, char **argv)
 {
   stack_t *head;
   FILE *filename;
@@ -39,6 +45,7 @@ void main()
   unsigned int line_number;
 
   head = NULL;
+  filename = NULL;
   line = NULL;
   line_length = 0;
   line_number = 0;
