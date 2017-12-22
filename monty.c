@@ -13,14 +13,10 @@ void find_function(stack_t **stack, unsigned int line_number)
 {
 	unsigned int i = 0;
 	instruction_t functions[] = {
-		{"push", op_push},
-		{"pall", op_pall},
-		{"pint", op_pint},
-		{"pop", op_pop},
-		{"swap", op_swap},
-		{"add", op_add},
-		{"nop", op_nop},
-		{NULL, NULL}
+		{"push", op_push}, {"pall", op_pall},
+		{"pint", op_pint}, {"pop", op_pop},
+		{"swap", op_swap}, {"add", op_add},
+		{"nop", op_nop}, {NULL, NULL}
 	};
 
 	while (functions[i].opcode != NULL)
@@ -32,11 +28,18 @@ void find_function(stack_t **stack, unsigned int line_number)
 		}
 		i++;
 	}
+
+	/* Could not find command in array, invalid command */
+	if (functions[i].opcode == NULL)
+	{
+		printf("L%u: unknown instruction %s\n", line_number, global.op_name);
+		exit(EXIT_FAILURE);
+	}
 }
 
 
 /**
- * main     - InterpretsMonty bytecodes
+ * main     - Interprets Monty bytecodes
  *
  * @argc:     Number of arguments
  * @argv:     Array of arguments
@@ -62,14 +65,14 @@ int main(int argc, char **argv)
 	fp = fopen(argv[1], "r");
 	if (fp == NULL)
 	{
-		printf("Error: Can't open file <file> %s\n", argv[1]);
+		printf("Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 
 	while (getline(&line, &line_length, fp) != -1)
 	{
-		global.op_name = strtok(line, "\n\t ");
-		global.value = strtok(NULL, " ");
+		global.op_name = strtok(line, "\n\t\r\v\f ");
+		global.value = strtok(NULL, "\n\t\r\v\f ");
 
 		if (global.op_name != NULL)
 		{
