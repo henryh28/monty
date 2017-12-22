@@ -12,13 +12,10 @@ void op_pall(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 	stack_t *current = *stack;
 
-	if (global.head != NULL)
+	while (current != NULL)
 	{
-		while (current != NULL)
-		{
-			printf("%d\n", current->n);
-			current = current->next;
-		}
+		printf("%d\n", current->n);
+		current = current->next;
 	}
 }
 
