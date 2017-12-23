@@ -7,11 +7,11 @@
  * @line_number:  Current line number in monty script file
  */
 
-void op_pall(stack_t **stack, unsigned int line_number)
+void op_pall(stack_t **stack, unsigned int line_number __attribute__((unused)))
 {
-	(void)line_number;
 	stack_t *current = *stack;
 
+	(void)line_number;
 	while (current != NULL)
 	{
 		printf("%d\n", current->n);
